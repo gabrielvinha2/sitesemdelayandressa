@@ -1,24 +1,4 @@
-import { useEffect } from "react";
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      "vturb-smartplayer": any;
-    }
-  }
-}
-
 export default function Index() {
-  useEffect(() => {
-    const src =
-      "https://scripts.converteai.net/cd080c38-edae-4bc7-a6d5-8dd4c2328a90/players/68bdff64575dfb94b013b570/v4/player.js";
-    if (!document.querySelector(`script[src="${src}"]`)) {
-      const s = document.createElement("script");
-      s.src = src;
-      s.async = true;
-      document.head.appendChild(s);
-    }
-  }, []);
   return (
     <div className="min-h-screen bg-black text-white font-sans">
       {/* Hero Section */}
@@ -63,15 +43,26 @@ export default function Index() {
             escassez.
           </p>
 
-          <vturb-smartplayer
-            id="vid-68bdff64575dfb94b013b570"
-            style={{
-              display: "block",
-              margin: "0 auto",
-              width: "100%",
-              maxWidth: 400,
-            }}
-          />
+          {/* Video player placeholder - replace with your preferred video solution */}
+          <div className="w-full max-w-[400px] mx-auto bg-gray-800 rounded-lg aspect-video flex items-center justify-center mb-8">
+            <div className="text-center">
+              <div className="w-16 h-16 mx-auto mb-4 bg-white/20 rounded-full flex items-center justify-center">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M8 5V19L19 12L8 5Z"
+                    fill="white"
+                  />
+                </svg>
+              </div>
+              <p className="text-white/80 text-sm">Vídeo será carregado aqui</p>
+            </div>
+          </div>
 
           {/* CTA Button */}
           <button className="w-full max-w-[320px] px-6 py-4 bg-gradient-to-r from-emerald-900/90 to-emerald-500/90 border border-emerald-500/50 rounded-xl text-white font-bold text-sm uppercase tracking-wide shadow-lg shadow-emerald-500/10 flex items-center justify-center gap-3 hover:from-emerald-800/90 hover:to-emerald-400/90 transition-all">
