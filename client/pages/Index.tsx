@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+
 export default function Index() {
   useEffect(() => {
     // Load the VSL script
