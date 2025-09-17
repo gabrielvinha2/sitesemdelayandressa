@@ -1,4 +1,20 @@
 export default function Index() {
+  useEffect(() => {
+    // Load the VSL script
+    const script = document.createElement("script");
+    script.src = "https://scripts.converteai.net/cd080c38-edae-4bc7-a6d5-8dd4c2328a90/players/68bdff64575dfb94b013b570/v4/player.js";
+    script.async = true;
+    document.head.appendChild(script);
+
+    return () => {
+      // Cleanup script on unmount
+      const existingScript = document.querySelector(`script[src="${script.src}"]`);
+      if (existingScript) {
+        existingScript.remove();
+      }
+    };
+  }, []);
+
   return (
     <div className="min-h-screen bg-black text-white font-sans">
       {/* Hero Section */}
@@ -43,25 +59,17 @@ export default function Index() {
             escassez.
           </p>
 
-          {/* Video player placeholder - replace with your preferred video solution */}
-          <div className="w-full max-w-[400px] mx-auto bg-gray-800 rounded-lg aspect-video flex items-center justify-center mb-8">
-            <div className="text-center">
-              <div className="w-16 h-16 mx-auto mb-4 bg-white/20 rounded-full flex items-center justify-center">
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M8 5V19L19 12L8 5Z"
-                    fill="white"
-                  />
-                </svg>
-              </div>
-              <p className="text-white/80 text-sm">Vídeo será carregado aqui</p>
-            </div>
+          {/* VSL Video Player */}
+          <div className="w-full max-w-[400px] mx-auto mb-8">
+            <vturb-smartplayer 
+              id="vid-68bdff64575dfb94b013b570" 
+              style={{
+                display: 'block',
+                margin: '0 auto',
+                width: '100%',
+                maxWidth: '400px'
+              }}
+            />
           </div>
 
           {/* CTA Button */}
